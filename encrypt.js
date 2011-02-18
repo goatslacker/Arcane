@@ -1,4 +1,4 @@
-#!/usr/env/node
+#!/usr/bin/env node
 
 function Cryptography (text, password, useSalt) {
   password = password || false;
