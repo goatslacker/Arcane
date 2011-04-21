@@ -1,15 +1,33 @@
 #!/usr/bin/env node
 
-var Arcane = require('../').Encrypt
-  , args = process.argv.slice(2)
-  , password = ""
-  , i = 0;
+var Arcane = require('../').Arcane,
+  password = "",
+  args = (function () {
+    var args = process.argv.splice(2),
+        key = null,
+        val = null,
+        arg = null,
+        obj = {};
 
-for (i; i < args.length; i = i + 1) {
-  if (args[i] === "--password") {
-    password = args[i + 1];
-    args.splice(i, 2);
-  }
+    obj.arguments = [];
+
+    while (args.length) {
+      arg = args.shift();    
+
+      if (arg.indexOf("-") !== -1) {
+        obj[arg] = args.shift();
+      } else {
+        obj.arguments.push(arg);
+      }
+    }
+
+    return obj;
+  }());
+
+password = args['-p'] || false;
+
+if ("-d" in args) {
+  console.log(Arcane.decrypt(args['-d'], password));
+} else {
+  console.log(Arcane.encrypt(args.arguments.join(" "), password));
 }
-
-console.log(Arcane(args.join(" "), password));
