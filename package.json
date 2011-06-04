@@ -1,7 +1,7 @@
 {
   "name": "arcane",
-  "version": "0.0.1",
-  "description": "Encryption tool for node",
+  "version": "0.1.0",
+  "description": "Simple crypt/decrypt text tool for node",
   "repository": {
     "type": "git",
     "url": "https://github.com/goatslacker/Arcane.git"

@@ -1,1 +1,1 @@
-module.exports = require('./lib/node-arcane.js');
+module.exports = require('./lib/arcane.js');

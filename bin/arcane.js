@@ -9,7 +9,7 @@ var Arcane = require('../').Arcane,
         arg = null,
         obj = {};
 
-    obj.arguments = [];
+    obj.args = [];
 
     while (args.length) {
       arg = args.shift();    
@@ -17,7 +17,7 @@ var Arcane = require('../').Arcane,
       if (arg.indexOf("-") !== -1) {
         obj[arg] = args.shift();
       } else {
-        obj.arguments.push(arg);
+        obj.args.push(arg);
       }
     }
 
@@ -29,5 +29,5 @@ password = args['-p'] || false;
 if ("-d" in args) {
   console.log(Arcane.decrypt(args['-d'], password));
 } else {
-  console.log(Arcane.encrypt(args.arguments.join(" "), password));
+  console.log(Arcane.encrypt(args.args.join(" "), password));
 }
